@@ -15,16 +15,16 @@ public class PracticaMedica {
     private String nombre;
     private int cantidad;
     private boolean estado = true;
-    private String causa;
+    private String causa = "";
     private Random md = new Random();
     private double numEstado = md.nextDouble();
     private int motivo = 0;
-    private String[] causas = {"Desconocido", "Falta firma médico", "Saturación de dicha práctica", "Datos incorrectos", "Tratamiento excesivamente caro"};
+    private String[] causas = {"Desconocida", "Falta firma médico", "Saturación de dicha práctica", "Datos incorrectos", "Tratamiento excesivamente caro"};
 
-    private boolean comprobarEstado(){
+    public boolean comprobarEstado(){
         if(getNumEstado()<0.5){
             setEstado(false);
-            motivo = (int) (getMd().nextDouble()*5);
+            motivo = (int) (getMd().nextDouble()*4);
             setCausa(getCausas()[motivo]);
         }
         return isEstado();
