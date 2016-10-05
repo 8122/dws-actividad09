@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="java.util.Random"%>
 <%@page contentType="text/html;UTF-8"%>
 <!DOCTYPE html>
 <jsp:useBean id="usuario" scope="request" class="entidad.PracticaMedica" />
@@ -29,15 +30,22 @@
                 <tr>
                     <td align="right">Estado:</td>
                     <td>
-                        <% String aceptada="", rechazada=""; %>
-                        <% if(Boolean.parseBoolean(request.getParameter("estado"))==true) { aceptada="checked"; }
-                        else { rechazada="checked"; } %>
-                        <input type="checkbox" name="estado" value="OFF"  checked="<%=aceptada%>"/>Autorizada
-                        <input type="checkbox" name="estado" value="OFF"  checked="<%=rechazada%>"/>Rechazada
+                        <%
+                            Random rd = new Random();
+                            String aceptada, rechazada;
+                            if(rd.nextDouble()<0.5) {
+                                aceptada = "checked";
+                            } else {
+                                rechazada = "checked";
+                            } 
+                        %>
+                        <input type="checkbox" name="estado" value=""  checked="<% request.getParameter("aceptada"); %>"/>Autorizada
+                        <input type="checkbox" name="estado" value=""  checked="<% request.getParameter("rechazada"); %>"/>Rechazada
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Causa de rechazo: </td>
+                    <% int motivo; %>
                     <td><input type="text" name="causa" readonly="readonly" size="25" value="<% request.getParameter("causa");%>"></td>
                 </tr>
                 <tr>
@@ -47,7 +55,6 @@
             </table>
         </form>
         <% } else { %>
-            <% PracticaMedica.comprobarEstado(); %>
             <% String nombre, cantidad, estado, causa; %>
             <% 
                 nombre = request.getParameter("nombre");
@@ -59,7 +66,6 @@
             <jsp:setProperty name="usuario" property="cantidad" value="<%=cantidad%>" />
             <jsp:setProperty name="usuario" property="estado" value="<%=estado%>" />
             <jsp:setProperty name="usuario" property="causa" value="<%=causa%>" />
-            <jsp:forward page="/formulario2.jsp" ></jsp:forward>
         <% } %>
     </body>
 </html>
