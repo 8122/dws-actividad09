@@ -18,56 +18,56 @@ public class PracticaMedica {
     /**
      * @return the nombre
      */
-    private String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
      * @param nombre the nombre to set
      */
-    private void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
      * @return the cantidad
      */
-    private String getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
     /**
      * @param cantidad the cantidad to set
      */
-    private void setCantidad(String cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 
     /**
      * @return the estado
      */
-    private String getEstado() {
+    public String getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    private void setEstado(String estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
     /**
      * @return the causa
      */
-    private String getCausa() {
+    public String getCausa() {
         return causa;
     }
 
     /**
      * @param causa the causa to set
      */
-    private void setCausa(String causa) {
+    public void setCausa(String causa) {
         this.causa = causa;
     }
 
